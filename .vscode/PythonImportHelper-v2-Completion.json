@@ -1,5 +1,32 @@
 [
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -26,6 +53,32 @@
         "documentation": {}
     },
     {
+        "label": "os.path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.path",
+        "description": "os.path",
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "memory_usage",
+        "importPath": "memory_profiler",
+        "description": "memory_profiler",
+        "isExtraImport": true,
+        "detail": "memory_profiler",
+        "documentation": {}
+    },
+    {
         "label": "session4",
         "kind": 6,
         "isExtraImport": true,
@@ -35,12 +88,21 @@
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
+        "label": "importlib_load_entry_point",
+        "kind": 2,
+        "importPath": "epai.Scripts.mprof-script",
+        "description": "epai.Scripts.mprof-script",
+        "peekOfCode": "def importlib_load_entry_point(spec, group, name):\n    dist_name, _, _ = spec.partition('==')\n    matches = (\n        entry_point\n        for entry_point in distribution(dist_name).entry_points\n        if entry_point.group == group and entry_point.name == name\n    )\n    return next(matches).load()\nglobals().setdefault('load_entry_point', importlib_load_entry_point)\nif __name__ == '__main__':",
+        "detail": "epai.Scripts.mprof-script",
+        "documentation": {}
+    },
+    {
+        "label": "__requires__",
+        "kind": 5,
+        "importPath": "epai.Scripts.mprof-script",
+        "description": "epai.Scripts.mprof-script",
+        "peekOfCode": "__requires__ = 'memory-profiler==0.58.0'\ntry:\n    from importlib.metadata import distribution\nexcept ImportError:\n    try:\n        from importlib_metadata import distribution\n    except ImportError:\n        from pkg_resources import load_entry_point\ndef importlib_load_entry_point(spec, group, name):\n    dist_name, _, _ = spec.partition('==')",
+        "detail": "epai.Scripts.mprof-script",
         "documentation": {}
     },
     {
@@ -48,7 +110,7 @@
         "kind": 2,
         "importPath": "session4",
         "description": "session4",
-        "peekOfCode": "def squared_power_list(b,**kwargs):\n    start=kwargs['start'] if 'start' in [*kwargs] else 0\n    end=kwargs['end'] if 'end' in [*kwargs] else 0\n    if end<start: \n        return [0]\n    else:\n        return ([b**i for i in range(start,end+1)])\ndef polygon_area(*lengths,**kwargs):\n    sides=kwargs['sides'] if 'sides' in [*kwargs] else 0\n    return sum(lengths)*sides/2",
+        "peekOfCode": "def squared_power_list(b,**kwargs):\n    if 'start' not in [*kwargs] or 'end' not in [*kwargs]:\n        raise ValueError('Hey dude, start and end are kw arguments missing')        \n    start=kwargs['start'] if 'start' in [*kwargs] else 0\n    end=kwargs['end'] if 'end' in [*kwargs] else 0\n    if end<start: \n        return [0]\n    else:\n        return ([b**i for i in range(start,end+1)])\ndef polygon_area(*lengths,**kwargs):",
         "detail": "session4",
         "documentation": {}
     },
@@ -57,7 +119,7 @@
         "kind": 2,
         "importPath": "session4",
         "description": "session4",
-        "peekOfCode": "def polygon_area(*lengths,**kwargs):\n    sides=kwargs['sides'] if 'sides' in [*kwargs] else 0\n    return sum(lengths)*sides/2\ndef temp_converter(*n,**kwargs):\n    temp_given_in=kwargs['temp_given_in'] if 'temp_given_in' in [*kwargs] else 'f'\n    return 5/9*(n[0]-32) if temp_given_in=='f' else 9/5*n[0]+32\ndef speed_converter(*kmph,,**kwargs):\n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':",
+        "peekOfCode": "def polygon_area(*lengths,**kwargs):\n    if  'sides' not in [*kwargs]:\n        raise ValueError('Hey dude, sides kw arguments missing')        \n    sides=kwargs['sides'] if 'sides' in [*kwargs] else 0\n    if sides<0 or lengths[0]<0:\n        raise ValueError('Hey dude, sides/length cannot be negative')        \n    return sum(lengths)*sides/2\ndef temp_converter(*n,**kwargs):\n    if 'temp_given_in' not in [*kwargs]:\n        raise ValueError('Hey dude, temp_given_in kw arguments missing')        ",
         "detail": "session4",
         "documentation": {}
     },
@@ -66,7 +128,7 @@
         "kind": 2,
         "importPath": "session4",
         "description": "session4",
-        "peekOfCode": "def temp_converter(*n,**kwargs):\n    temp_given_in=kwargs['temp_given_in'] if 'temp_given_in' in [*kwargs] else 'f'\n    return 5/9*(n[0]-32) if temp_given_in=='f' else 9/5*n[0]+32\ndef speed_converter(*kmph,,**kwargs):\n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':\n        d=kmph[0]\n    elif dist=='m':\n        d=kmph[0]/1000.0",
+        "peekOfCode": "def temp_converter(*n,**kwargs):\n    if 'temp_given_in' not in [*kwargs]:\n        raise ValueError('Hey dude, temp_given_in kw arguments missing')        \n    temp_given_in=kwargs['temp_given_in'] if 'temp_given_in' in [*kwargs] else 'f'\n    return 5/9*(n[0]-32) if temp_given_in=='f' else 9/5*n[0]+32\ndef speed_converter(*kmph,**kwargs):\n    if 'dist' not in [*kwargs] or 'time' not in [*kwargs]:\n        raise ValueError('Hey dude, dist and time are kw arguments missing')        \n    if kmph[0]<0:\n        raise ValueError('Hey dude, kmph cannot be negative')           ",
         "detail": "session4",
         "documentation": {}
     },
@@ -75,7 +137,7 @@
         "kind": 2,
         "importPath": "session4",
         "description": "session4",
-        "peekOfCode": "def speed_converter(*kmph,,**kwargs):\n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':\n        d=kmph[0]\n    elif dist=='m':\n        d=kmph[0]/1000.0\n    elif dist=='ft':\n        d=kmph[0]/3280.0\n    elif dist=='yard':",
+        "peekOfCode": "def speed_converter(*kmph,**kwargs):\n    if 'dist' not in [*kwargs] or 'time' not in [*kwargs]:\n        raise ValueError('Hey dude, dist and time are kw arguments missing')        \n    if kmph[0]<0:\n        raise ValueError('Hey dude, kmph cannot be negative')           \n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':\n        d=kmph[0]\n    elif dist=='m':",
         "detail": "session4",
         "documentation": {}
     },
@@ -84,8 +146,17 @@
         "kind": 2,
         "importPath": "session4",
         "description": "session4",
-        "peekOfCode": "def time_it(fn, *args, repetitons= 1, **kwargs):\n    if args:\n        return fn(*args * repetitons, **kwargs)\n    else:\n        return 0",
+        "peekOfCode": "def time_it(fn, *args, repetitons= 1, **kwargs):\n    if args:\n        for i in args:\n            if type(i)!=int and type(i)!=float:\n                raise ValueError('Hey dude, arguments got to be int/float')\n                break\n    else:\n        raise ValueError('Hey dude, No arguments given for processing')\n    if kwargs:\n        try:",
         "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_readme_file_for_formatting",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_readme_file_for_formatting():\n    f = open(\"README.md\", \"r\", encoding=\"utf-8\")\n    content = f.read()\n    f.close()\n    assert content.count(\"#\") >= 5\ndef test_fourspace_equal():\n    assert fourspace(session4) == False, 'Not all spaces before lines are a multiple of 4!'\ndef test_function_names():\n    assert function_name_had_cap_letter(session4) == False, \"One of your function has a capitalized alphabet!\"\ndef test_readme_exists():",
+        "detail": "test_session4",
         "documentation": {}
     },
     {
@@ -93,7 +164,7 @@
         "kind": 2,
         "importPath": "test_session4",
         "description": "test_session4",
-        "peekOfCode": "def test_fourspace_equal():\n    assert fourspace(session1) == False, 'Not all spaces before lines are a multiple of 4!'\ndef test_function_names():\n    assert function_name_had_cap_letter(session1) == False, \"One of your function has a capitalized alphabet!\"",
+        "peekOfCode": "def test_fourspace_equal():\n    assert fourspace(session4) == False, 'Not all spaces before lines are a multiple of 4!'\ndef test_function_names():\n    assert function_name_had_cap_letter(session4) == False, \"One of your function has a capitalized alphabet!\"\ndef test_readme_exists():\n    assert os.path.isfile(\"README.md\"), \"README.md file missing!\"\ndef test_readme_proper_description():\n    README_CONTENT_CHECK_FOR=[]\n    functions = inspect.getmembers(session4, inspect.isfunction)\n    for function in functions:",
         "detail": "test_session4",
         "documentation": {}
     },
@@ -102,7 +173,214 @@
         "kind": 2,
         "importPath": "test_session4",
         "description": "test_session4",
-        "peekOfCode": "def test_function_names():\n    assert function_name_had_cap_letter(session1) == False, \"One of your function has a capitalized alphabet!\"",
+        "peekOfCode": "def test_function_names():\n    assert function_name_had_cap_letter(session4) == False, \"One of your function has a capitalized alphabet!\"\ndef test_readme_exists():\n    assert os.path.isfile(\"README.md\"), \"README.md file missing!\"\ndef test_readme_proper_description():\n    README_CONTENT_CHECK_FOR=[]\n    functions = inspect.getmembers(session4, inspect.isfunction)\n    for function in functions:\n        README_CONTENT_CHECK_FOR.extend([function[0]])\n    READMELOOKSGOOD = True",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_readme_exists",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_readme_exists():\n    assert os.path.isfile(\"README.md\"), \"README.md file missing!\"\ndef test_readme_proper_description():\n    README_CONTENT_CHECK_FOR=[]\n    functions = inspect.getmembers(session4, inspect.isfunction)\n    for function in functions:\n        README_CONTENT_CHECK_FOR.extend([function[0]])\n    READMELOOKSGOOD = True\n    f = open(\"README.md\", \"r\")\n    content = f.read()",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_readme_proper_description",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_readme_proper_description():\n    README_CONTENT_CHECK_FOR=[]\n    functions = inspect.getmembers(session4, inspect.isfunction)\n    for function in functions:\n        README_CONTENT_CHECK_FOR.extend([function[0]])\n    READMELOOKSGOOD = True\n    f = open(\"README.md\", \"r\")\n    content = f.read()\n    f.close()\n    for c in README_CONTENT_CHECK_FOR:",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_readme_contents",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_readme_contents():\n    readme_words=[word for line in open('README.md', 'r', encoding=\"utf-8\") for word in line.split()]\n    assert len(readme_words) >= 500, \"Make your README.md file interesting! Add atleast 500 words\"\ndef test_invalid_function():\n    with pytest.raises(AttributeError):\n        assert session4.time_it(session4.squared_power_list1, 3,start=0,end=5)\ndef test_exec_without_args():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print,  sep='-', end= ' ***\\n', repetitons=5)\n        assert session4.time_it(session4.squared_power_list, start=0,end=5)",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_invalid_function",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_invalid_function():\n    with pytest.raises(AttributeError):\n        assert session4.time_it(session4.squared_power_list1, 3,start=0,end=5)\ndef test_exec_without_args():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print,  sep='-', end= ' ***\\n', repetitons=5)\n        assert session4.time_it(session4.squared_power_list, start=0,end=5)\n        assert session4.time_it(session4.polygon_area, sides = 3, repetitons=10)\n        assert session4.time_it(session4.temp_converter, temp_given_in = 'c', repetitons=100)\n        assert session4.time_it(session4.speed_converter,  dist='km', time='m', repetitons=200)",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_exec_without_args",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_exec_without_args():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print,  sep='-', end= ' ***\\n', repetitons=5)\n        assert session4.time_it(session4.squared_power_list, start=0,end=5)\n        assert session4.time_it(session4.polygon_area, sides = 3, repetitons=10)\n        assert session4.time_it(session4.temp_converter, temp_given_in = 'c', repetitons=100)\n        assert session4.time_it(session4.speed_converter,  dist='km', time='m', repetitons=200)\ndef test_exec_without_kwargs():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print, 1, 2, 3,  repetitons=5)",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_exec_without_kwargs",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_exec_without_kwargs():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print, 1, 2, 3,  repetitons=5)\n        assert session4.time_it(session4.squared_power_list, 3)\n        assert session4.time_it(session4.polygon_area, 15,  repetitons=10)\n        assert session4.time_it(session4.temp_converter, 37.78,  repetitons=100)\n        assert session4.time_it(session4.speed_converter, 100,  repetitons=200)\ndef test_exec_with_str_args():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print, 'a', sep='-', end= ' ***\\n', repetitons=5)",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_exec_with_str_args",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_exec_with_str_args():\n    with pytest.raises(ValueError):\n        assert session4.time_it(print, 'a', sep='-', end= ' ***\\n', repetitons=5)\n        assert session4.time_it(session4.squared_power_list,'a', start=0,end=5) \n        assert session4.time_it(session4.polygon_area,'a', sides = 3, repetitons=10) \n        assert session4.time_it(session4.temp_converter,'a', temp_given_in = 'c', repetitons=100) \n        assert session4.time_it(session4.speed_converter, 'a', dist='km', time='m', repetitons=200)\ndef test_check_kwargs_squared_power_list():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.squared_power_list, 3,start1=0,end1=5)",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_check_kwargs_squared_power_list",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_check_kwargs_squared_power_list():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.squared_power_list, 3,start1=0,end1=5)\ndef test_check_kwargs_polygon_area():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.polygon_area, 15, sides2 = 3, repetitons=10)\ndef test_check_kwargs_temp_converter():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.temp_converter, 37.78, repetitons=100)\ndef test_check_kwargs_speed_converter():",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_check_kwargs_polygon_area",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_check_kwargs_polygon_area():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.polygon_area, 15, sides2 = 3, repetitons=10)\ndef test_check_kwargs_temp_converter():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.temp_converter, 37.78, repetitons=100)\ndef test_check_kwargs_speed_converter():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.speed_converter, 100, dist='km',  repetitons=200)\ndef test_performance_print():",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_check_kwargs_temp_converter",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_check_kwargs_temp_converter():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.temp_converter, 37.78, repetitons=100)\ndef test_check_kwargs_speed_converter():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.speed_converter, 100, dist='km',  repetitons=200)\ndef test_performance_print():\n    start1 = time.perf_counter()\n    session4.time_it(print, 1, 2, 3, sep='-', end= ' ***\\n', repetitons=5)\n    end1 = time.perf_counter()",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_check_kwargs_speed_converter",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_check_kwargs_speed_converter():\n    with pytest.raises(ValueError):\n        assert session4.time_it(session4.speed_converter, 100, dist='km',  repetitons=200)\ndef test_performance_print():\n    start1 = time.perf_counter()\n    session4.time_it(print, 1, 2, 3, sep='-', end= ' ***\\n', repetitons=5)\n    end1 = time.perf_counter()\n    delta1 = end1 - start1\n    assert delta1 < 0.1\ndef test_performance_squared_power_list():",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_performance_print",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_performance_print():\n    start1 = time.perf_counter()\n    session4.time_it(print, 1, 2, 3, sep='-', end= ' ***\\n', repetitons=5)\n    end1 = time.perf_counter()\n    delta1 = end1 - start1\n    assert delta1 < 0.1\ndef test_performance_squared_power_list():\n    start1 = time.perf_counter()\n    session4.time_it(session4.squared_power_list, 3,start=0,end=5)\n    end1 = time.perf_counter()",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_performance_squared_power_list",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_performance_squared_power_list():\n    start1 = time.perf_counter()\n    session4.time_it(session4.squared_power_list, 3,start=0,end=5)\n    end1 = time.perf_counter()\n    delta1 = end1 - start1\n    assert delta1 < 0.1\ndef test_performance_polygon_area():\n    start1 = time.perf_counter()\n    session4.time_it(session4.polygon_area, 15, sides = 3, repetitons=10)\n    end1 = time.perf_counter()",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_performance_polygon_area",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_performance_polygon_area():\n    start1 = time.perf_counter()\n    session4.time_it(session4.polygon_area, 15, sides = 3, repetitons=10)\n    end1 = time.perf_counter()\n    delta1 = end1 - start1\n    assert delta1 < 0.1\ndef test_performance_temp_converter():\n    start1 = time.perf_counter()\n    session4.time_it(session4.temp_converter, 37.78, temp_given_in = 'c', repetitons=100)\n    end1 = time.perf_counter()",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_performance_temp_converter",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_performance_temp_converter():\n    start1 = time.perf_counter()\n    session4.time_it(session4.temp_converter, 37.78, temp_given_in = 'c', repetitons=100)\n    end1 = time.perf_counter()\n    delta1 = end1 - start1\n    assert delta1 < 0.1\ndef test_performance_speed_converter():\n    start1 = time.perf_counter()\n    session4.time_it(session4.speed_converter, 100, dist='km', time='m', repetitons=200)\n    end1 = time.perf_counter()",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_performance_speed_converter",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_performance_speed_converter():\n    start1 = time.perf_counter()\n    session4.time_it(session4.speed_converter, 100, dist='km', time='m', repetitons=200)\n    end1 = time.perf_counter()\n    delta1 = end1 - start1\n    assert delta1 < 0.1\ndef test_result_squared_power_list():\n    assert session4.time_it(session4.squared_power_list, 3,start=0,end=5) == [1, 3, 9, 27, 81, 243], 'squared_power_list is not yielding desired result'\ndef test_result_squared_power_list_negative():\n    assert session4.time_it(session4.squared_power_list, -3,start=0,end=5) == [1, -3, 9, -27, 81, -243], 'squared_power_list is not yielding desired result'",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_squared_power_list",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_squared_power_list():\n    assert session4.time_it(session4.squared_power_list, 3,start=0,end=5) == [1, 3, 9, 27, 81, 243], 'squared_power_list is not yielding desired result'\ndef test_result_squared_power_list_negative():\n    assert session4.time_it(session4.squared_power_list, -3,start=0,end=5) == [1, -3, 9, -27, 81, -243], 'squared_power_list is not yielding desired result'\ndef test_result_polygon_area():\n    assert(session4.time_it(session4.polygon_area, 15, sides = 3, repetitons=10)) == 225, 'polygon_area is not yielding desired list'\ndef test_result_polygon_area_negative():\n    with pytest.raises(ValueError):\n        assert(session4.time_it(session4.polygon_area, -15, sides = 3, repetitons=10)), 'length / sides cannot be negative'\ndef test_result_temp_converter():",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_squared_power_list_negative",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_squared_power_list_negative():\n    assert session4.time_it(session4.squared_power_list, -3,start=0,end=5) == [1, -3, 9, -27, 81, -243], 'squared_power_list is not yielding desired result'\ndef test_result_polygon_area():\n    assert(session4.time_it(session4.polygon_area, 15, sides = 3, repetitons=10)) == 225, 'polygon_area is not yielding desired list'\ndef test_result_polygon_area_negative():\n    with pytest.raises(ValueError):\n        assert(session4.time_it(session4.polygon_area, -15, sides = 3, repetitons=10)), 'length / sides cannot be negative'\ndef test_result_temp_converter():\n    assert(session4.time_it(session4.temp_converter, 37.78, temp_given_in = 'c', repetitons=100))==100.004, 'temp_converter is not yielding desired list'\ndef test_result_speed_converter():",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_polygon_area",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_polygon_area():\n    assert(session4.time_it(session4.polygon_area, 15, sides = 3, repetitons=10)) == 225, 'polygon_area is not yielding desired list'\ndef test_result_polygon_area_negative():\n    with pytest.raises(ValueError):\n        assert(session4.time_it(session4.polygon_area, -15, sides = 3, repetitons=10)), 'length / sides cannot be negative'\ndef test_result_temp_converter():\n    assert(session4.time_it(session4.temp_converter, 37.78, temp_given_in = 'c', repetitons=100))==100.004, 'temp_converter is not yielding desired list'\ndef test_result_speed_converter():\n    assert(round(session4.time_it(session4.speed_converter, 100, dist='km', time='m', repetitons=200),2))==1.67, 'speed_converter is not yielding desired list'\ndef test_result_speed_converter_negative():",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_polygon_area_negative",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_polygon_area_negative():\n    with pytest.raises(ValueError):\n        assert(session4.time_it(session4.polygon_area, -15, sides = 3, repetitons=10)), 'length / sides cannot be negative'\ndef test_result_temp_converter():\n    assert(session4.time_it(session4.temp_converter, 37.78, temp_given_in = 'c', repetitons=100))==100.004, 'temp_converter is not yielding desired list'\ndef test_result_speed_converter():\n    assert(round(session4.time_it(session4.speed_converter, 100, dist='km', time='m', repetitons=200),2))==1.67, 'speed_converter is not yielding desired list'\ndef test_result_speed_converter_negative():\n    with pytest.raises(ValueError):\n        assert(round(session4.time_it(session4.speed_converter, -100, dist='km', time='m', repetitons=200),2))==1.67, 'distance cannot be negative'",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_temp_converter",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_temp_converter():\n    assert(session4.time_it(session4.temp_converter, 37.78, temp_given_in = 'c', repetitons=100))==100.004, 'temp_converter is not yielding desired list'\ndef test_result_speed_converter():\n    assert(round(session4.time_it(session4.speed_converter, 100, dist='km', time='m', repetitons=200),2))==1.67, 'speed_converter is not yielding desired list'\ndef test_result_speed_converter_negative():\n    with pytest.raises(ValueError):\n        assert(round(session4.time_it(session4.speed_converter, -100, dist='km', time='m', repetitons=200),2))==1.67, 'distance cannot be negative'",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_speed_converter",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_speed_converter():\n    assert(round(session4.time_it(session4.speed_converter, 100, dist='km', time='m', repetitons=200),2))==1.67, 'speed_converter is not yielding desired list'\ndef test_result_speed_converter_negative():\n    with pytest.raises(ValueError):\n        assert(round(session4.time_it(session4.speed_converter, -100, dist='km', time='m', repetitons=200),2))==1.67, 'distance cannot be negative'",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_result_speed_converter_negative",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_result_speed_converter_negative():\n    with pytest.raises(ValueError):\n        assert(round(session4.time_it(session4.speed_converter, -100, dist='km', time='m', repetitons=200),2))==1.67, 'distance cannot be negative'",
         "detail": "test_session4",
         "documentation": {}
     },

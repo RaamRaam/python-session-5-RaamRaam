@@ -1,1 +1,6 @@
 epai
+
+.vscode/
+.metals
+.pytest_cache
+null
