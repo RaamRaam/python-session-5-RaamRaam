@@ -1,0 +1,127 @@
+[
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "inspect",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "inspect",
+        "description": "inspect",
+        "detail": "inspect",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "test_utils",
+        "description": "test_utils",
+        "isExtraImport": true,
+        "detail": "test_utils",
+        "documentation": {}
+    },
+    {
+        "label": "session4",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "session4",
+        "description": "session4",
+        "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "squared_power_list",
+        "kind": 2,
+        "importPath": "session4",
+        "description": "session4",
+        "peekOfCode": "def squared_power_list(b,**kwargs):\n    start=kwargs['start'] if 'start' in [*kwargs] else 0\n    end=kwargs['end'] if 'end' in [*kwargs] else 0\n    if end<start: \n        return [0]\n    else:\n        return ([b**i for i in range(start,end+1)])\ndef polygon_area(*lengths,**kwargs):\n    sides=kwargs['sides'] if 'sides' in [*kwargs] else 0\n    return sum(lengths)*sides/2",
+        "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "polygon_area",
+        "kind": 2,
+        "importPath": "session4",
+        "description": "session4",
+        "peekOfCode": "def polygon_area(*lengths,**kwargs):\n    sides=kwargs['sides'] if 'sides' in [*kwargs] else 0\n    return sum(lengths)*sides/2\ndef temp_converter(*n,**kwargs):\n    temp_given_in=kwargs['temp_given_in'] if 'temp_given_in' in [*kwargs] else 'f'\n    return 5/9*(n[0]-32) if temp_given_in=='f' else 9/5*n[0]+32\ndef speed_converter(*kmph,,**kwargs):\n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':",
+        "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "temp_converter",
+        "kind": 2,
+        "importPath": "session4",
+        "description": "session4",
+        "peekOfCode": "def temp_converter(*n,**kwargs):\n    temp_given_in=kwargs['temp_given_in'] if 'temp_given_in' in [*kwargs] else 'f'\n    return 5/9*(n[0]-32) if temp_given_in=='f' else 9/5*n[0]+32\ndef speed_converter(*kmph,,**kwargs):\n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':\n        d=kmph[0]\n    elif dist=='m':\n        d=kmph[0]/1000.0",
+        "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "speed_converter",
+        "kind": 2,
+        "importPath": "session4",
+        "description": "session4",
+        "peekOfCode": "def speed_converter(*kmph,,**kwargs):\n    dist=kwargs['dist'] if 'dist' in [*kwargs] else 'km'\n    time=kwargs['time'] if 'time' in [*kwargs] else 'h'\n    if dist=='km':\n        d=kmph[0]\n    elif dist=='m':\n        d=kmph[0]/1000.0\n    elif dist=='ft':\n        d=kmph[0]/3280.0\n    elif dist=='yard':",
+        "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "time_it",
+        "kind": 2,
+        "importPath": "session4",
+        "description": "session4",
+        "peekOfCode": "def time_it(fn, *args, repetitons= 1, **kwargs):\n    if args:\n        return fn(*args * repetitons, **kwargs)\n    else:\n        return 0",
+        "detail": "session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_fourspace_equal",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_fourspace_equal():\n    assert fourspace(session1) == False, 'Not all spaces before lines are a multiple of 4!'\ndef test_function_names():\n    assert function_name_had_cap_letter(session1) == False, \"One of your function has a capitalized alphabet!\"",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "test_function_names",
+        "kind": 2,
+        "importPath": "test_session4",
+        "description": "test_session4",
+        "peekOfCode": "def test_function_names():\n    assert function_name_had_cap_letter(session1) == False, \"One of your function has a capitalized alphabet!\"",
+        "detail": "test_session4",
+        "documentation": {}
+    },
+    {
+        "label": "fourspace",
+        "kind": 2,
+        "importPath": "test_utils",
+        "description": "test_utils",
+        "peekOfCode": "def fourspace(module_name):\n    r''' Returns pass if used four spaces for each level of syntactically \\\n    significant indenting.'''\n    lines = inspect.getsource(module_name)\n    spaces = re.findall('\\n(.+?)[a-zA-Z0-9]', lines)\n    for space in spaces:\n        if len(space) % 4 > 0 and len(space) != 1: #1 in case new fn or cls start after \\n\n            print(space)\n            return True\n    return False",
+        "detail": "test_utils",
+        "documentation": {}
+    },
+    {
+        "label": "function_name_had_cap_letter",
+        "kind": 2,
+        "importPath": "test_utils",
+        "description": "test_utils",
+        "peekOfCode": "def function_name_had_cap_letter(module_name):\n    functions = inspect.getmembers(module_name, inspect.isfunction)\n    for function in functions:\n        t = re.findall('([A-Z])', function[0])\n        if t:\n            return True\n    return False",
+        "detail": "test_utils",
+        "documentation": {}
+    }
+]
