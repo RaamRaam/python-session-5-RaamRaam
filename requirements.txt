@@ -2,8 +2,10 @@ atomicwrites==1.4.0
 attrs==20.3.0
 colorama==0.4.4
 iniconfig==1.1.1
+memory-profiler==0.58.0
 packaging==20.9
 pluggy==0.13.1
+psutil==5.8.0
 py==1.10.0
 pyparsing==2.4.7
 pytest==6.2.2
