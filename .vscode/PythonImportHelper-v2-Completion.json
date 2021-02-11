@@ -71,14 +71,6 @@
         "documentation": {}
     },
     {
-        "label": "memory_usage",
-        "importPath": "memory_profiler",
-        "description": "memory_profiler",
-        "isExtraImport": true,
-        "detail": "memory_profiler",
-        "documentation": {}
-    },
-    {
         "label": "session4",
         "kind": 6,
         "isExtraImport": true,

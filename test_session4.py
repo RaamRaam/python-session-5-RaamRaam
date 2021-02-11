@@ -7,14 +7,14 @@ from test_utils import *
 import os.path
 import time
 
-try:
-    import memory_profiler
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", 'memory-profiler'])
-finally:
-    import memory_profiler
+# try:
+#     import memory_profiler
+# except ImportError:
+#     subprocess.check_call([sys.executable, "-m", "pip", "install", 'memory-profiler'])
+# finally:
+#     import memory_profiler
 
-from memory_profiler import memory_usage
+# from memory_profiler import memory_usage
 
 import session4
 
