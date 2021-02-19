@@ -1,5 +1,5 @@
 
-# Session 5 - Assignment 2 solutions are in Assignment2.ipynb
+<!-- # Session 5 - Assignment 2 solutions are in Assignment2.ipynb -->
 # Session 5 - Assignment 1 solutions are in session5.py and test_session5.py
 
 The task is to deal cards to players and determine winner in basic poker.  The inputs are number of decks in set, number of players, number of cards per player and card combination for each of the player
