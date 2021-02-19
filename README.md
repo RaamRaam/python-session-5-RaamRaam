@@ -1,118 +1,58 @@
-# squared_power_list
 
-# polygon_area
+# Session 5 - Assignment 2 solutions are in Assignment2.ipynb
+# Session 5 - Assignment 1 solutions are in session5.py and test_session5.py
 
-# temp_converter
+The task is to deal cards to players and determine winner in basic poker.  The inputs are number of decks in set, number of players, number of cards per player and card combination for each of the player
 
-# speed_converter
+## The session5.py has the following
 
-# time_it
+1. Write a single expression that includes lambda, zip and map functions to select create 52 cards in a deck - 50 pts
 
-one one one one one one one one one one 
+   function: # create_deck_using_lambda_zip_map
 
-one one one one one one one one one one 
+   input: (vals: 'face values as List[String]', suits: 'classes as List[String]') 
 
-one one one one one one one one one one 
+   output: Deck as List[String]
 
-one one one one one one one one one one 
+   
 
-one one one one one one one one one one 
+2. Write a normal function without using lambda, zip, and map function to create 52 cards in a deck - 50 pts
 
-one one one one one one one one one one 
+   function: # create_deck_using_list_comprehension
 
-one one one one one one one one one one 
+   input: (vals: 'face values as List[String]', suits: 'classes as List[String]') 
 
-one one one one one one one one one one 
+   output: Deck as List[String]
 
-one one one one one one one one one one 
+   
 
-one one one one one one one one one one 
+3. Write a function that, when given 2 sets of 3 or 4 or 5 cards (1 game can only have 3 cards with each player or 4 cards or 5 cards per player) (1 deck of cards only), (2 players only), can identify who won the [game of poker (Links to an external site.)](https://i.pinimg.com/474x/6b/1f/f7/6b1ff73716c14139c951241f3c1d7c46.jpg)! - 150 pts
 
+   function: # deal (called from main function)
 
+   input: (no_of_decks: int,no_of_players: int,no_of_cards: int)
 
-one one one one one one one one one one 
+   output: Dealt Cards for each player
 
-one one one one one one one one one one 
+   
 
-one one one one one one one one one one 
+   function: # get_rank (called from decider)
 
-one one one one one one one one one one 
+   input: (hand: 'hand of cards with player as List[String]')
 
-one one one one one one one one one one 
+   output: Rank
 
-one one one one one one one one one one 
+   
+   function: # decider (calls get_rank)
 
-one one one one one one one one one one 
+   input: (hand1: 'Dealt cards to Player 1 as List[String]',hand2: 'Dealt cards to Player 2 as List[String]') 
 
-one one one one one one one one one one 
+   output: winner
 
-one one one one one one one one one one 
+4. Main Function calls in following order
 
-one one one one one one one one one one 
+   ​	hands=deal(2, 2, 5)      
 
+   ​	print(decider(hands[0],hands[1]))
 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
-one one one one one one one one one one 
-
+## test_session5.py has the test cases
